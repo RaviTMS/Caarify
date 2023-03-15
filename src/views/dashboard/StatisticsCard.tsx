@@ -20,6 +20,7 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 
 // ** Types
 import { ThemeColor } from 'src/@core/layouts/types'
+import { Car, Car2Plus, CarBrakeParking, CarClock, CarConnected, CarDefrostFront, CarEmergency } from 'mdi-material-ui'
 
 interface DataType {
   stats: string
@@ -31,27 +32,27 @@ interface DataType {
 const salesData: DataType[] = [
   {
     stats: '245k',
-    title: 'Sales',
+    title: 'Mechanics',
     color: 'primary',
-    icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />
-  },
-  {
-    stats: '12.5k',
-    title: 'Customers',
-    color: 'success',
     icon: <AccountOutline sx={{ fontSize: '1.75rem' }} />
   },
   {
-    stats: '1.54k',
+    stats: '12.5k',
+    title: 'Service Requests',
     color: 'warning',
-    title: 'Products',
-    icon: <CellphoneLink sx={{ fontSize: '1.75rem' }} />
+    icon: <CarClock sx={{ fontSize: '1.75rem' }} />
+  },
+  {
+    stats: '1.54k',
+    color: 'success',
+    title: 'Serviced',
+    icon: <Car sx={{ fontSize: '1.75rem' }} />
   },
   {
     stats: '$88k',
-    color: 'info',
-    title: 'Revenue',
-    icon: <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
+    color: 'error',
+    title: 'Emergency Requests',
+    icon: <CarConnected sx={{ fontSize: '1.75rem' }} />
   }
 ]
 
@@ -84,7 +85,7 @@ const renderStats = () => {
 const StatisticsCard = () => {
   return (
     <Card>
-      <CardHeader
+      {/* <CardHeader
         title='Statistics Card'
         action={
           <IconButton size='small' aria-label='settings' className='card-more-options' sx={{ color: 'text.secondary' }}>
@@ -106,7 +107,7 @@ const StatisticsCard = () => {
             letterSpacing: '0.15px !important'
           }
         }}
-      />
+      /> */}
       <CardContent sx={{ pt: theme => `${theme.spacing(3)} !important` }}>
         <Grid container spacing={[5, 0]}>
           {renderStats()}
