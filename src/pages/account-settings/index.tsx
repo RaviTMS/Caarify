@@ -52,7 +52,7 @@ const AccountSettings = () => {
   return (
     <Card>
       <TabContext value={value}>
-        <TabList
+        {/* <TabList
           onChange={handleChange}
           aria-label='account-settings tabs'
           sx={{ borderBottom: theme => `1px solid ${theme.palette.divider}` }}
@@ -84,7 +84,7 @@ const AccountSettings = () => {
               </Box>
             }
           />
-        </TabList>
+        </TabList> */}
 
         <TabPanel sx={{ p: 0 }} value='account'>
           <TabAccount />
