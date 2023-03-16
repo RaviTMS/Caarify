@@ -1,10 +1,7 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
-import Link from '@mui/material/Link'
 import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import MUI_Datatable from '../Datatable/MUI_Datatable'
+import Mechanic_Datatable from '../MUI_Datatable'
 
 const DataTable = () => {
 
@@ -12,7 +9,7 @@ const DataTable = () => {
         <Grid container spacing={6}>
             <Grid item xs={12}>
                 <Card>
-                    <MUI_Datatable />
+                    <Mechanic_Datatable />
                 </Card>
             </Grid>
         </Grid>

@@ -11,6 +11,8 @@ import Button, { ButtonProps } from '@mui/material/Button'
 // ** Icons Imports
 import TableStickyHeader from 'src/views/tables/TableStickyHeader'
 import Add_Mechanic from './Add_Mechanic'
+import DataTable from '../Datatable'
+import Mechanic_Datatable from '../Datatable/Mechanic_Table/Mechanic_datatable'
 
 const ImgStyled = styled('img')(({ theme }) => ({
     width: 120,
@@ -65,7 +67,8 @@ const Mechanic_Details = () => {
                             </Box>
                         </Box>
                         <Grid item xs={12} mt={5}>
-                            <TableStickyHeader />
+                            {/* <TableStickyHeader /> */}
+                            <Mechanic_Datatable />
                         </Grid>
 
                     </Grid>
