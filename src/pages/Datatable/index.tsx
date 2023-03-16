@@ -37,7 +37,7 @@ function App() {
     responsive,
     tableBodyHeight,
     tableBodyMaxHeight,
-    onTableChange: (action, state) => {
+    onTableChange: (action:string, state:string) => {
       console.log(action)
       console.dir(state)
     }
