@@ -12,6 +12,7 @@ import TableSpanning from 'src/views/tables/TableSpanning'
 import TableCustomized from 'src/views/tables/TableCustomized'
 import TableCollapsible from 'src/views/tables/TableCollapsible'
 import TableStickyHeader from 'src/views/tables/TableStickyHeader'
+import MUIDataTable from 'mui-datatables'
 
 const MUITable = () => {
   return (

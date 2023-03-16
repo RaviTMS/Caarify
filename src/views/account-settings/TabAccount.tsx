@@ -21,6 +21,7 @@ import Button, { ButtonProps } from '@mui/material/Button'
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
 import TableStickyHeader from '../tables/TableStickyHeader'
+import Add_Mechanic from 'src/pages/account-settings/Add_Mechanic'
 
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
@@ -79,6 +80,7 @@ const TabAccount = () => {
                     id='account-settings-upload-image'
                   />
                 </ButtonStyled>
+                <Add_Mechanic />
                 {/* <ResetButtonStyled color='error' variant='outlined' onClick={() => setImgSrc('/images/avatars/1.png')}>
                   Reset
                 </ResetButtonStyled> */}

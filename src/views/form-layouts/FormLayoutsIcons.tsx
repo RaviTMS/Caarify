@@ -12,10 +12,12 @@ import Phone from 'mdi-material-ui/Phone'
 import EmailOutline from 'mdi-material-ui/EmailOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
+import { Close } from 'mdi-material-ui'
 
 const FormLayoutsIcons = () => {
   return (
     <Card>
+      <Close />
       <CardHeader title='Basic with Icons' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
         <form onSubmit={e => e.preventDefault()}>
@@ -82,9 +84,12 @@ const FormLayoutsIcons = () => {
                 }}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} display="flex" justifyContent="space-between">
               <Button type='submit' variant='contained' size='large'>
                 Submit
+              </Button>
+              <Button type='submit' variant='contained' size='large' color="error">
+                Close
               </Button>
             </Grid>
           </Grid>
