@@ -19,7 +19,6 @@ const Dashboard = () => {
         <Grid item xs={12} md={12}>
           <StatisticsCard />
         </Grid>
-
         <Grid item xs={12}>
           <ServiceRequest_DataTable />
         </Grid>

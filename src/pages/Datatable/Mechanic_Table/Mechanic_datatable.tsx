@@ -12,21 +12,13 @@ const muiCache = createCache({
 
 function Mechanic_Datatable() {
 
-  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Title', 'Location']
+  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Email', 'Service Completed']
 
   const data = [
-    ['Gabby George', 'Business Analyst', 'Minneapolis'],
-    ['Aiden Lloyd', "Business Consultant for an International Company and CEO of Tony's Burger Palace", 'Dallas'],
-    ['Jaden Collins', 'Attorney', 'Santa Ana'],
-    ['Franky Rees', 'Business Analyst', 'St. Petersburg'],
-    ['Aaren Rose', null, 'Toledo'],
-    ['Johnny Jones', 'Business Analyst', 'St. Petersburg'],
-    ['Jimmy Johns', 'Business Analyst', 'Baltimore'],
-    ['Jack Jackson', 'Business Analyst', 'El Paso'],
-    ['Joe Jones', 'Computer Programmer', 'El Paso'],
-    ['Jacky Jackson', 'Business Consultant', 'Baltimore'],
-    ['Jo Jo', 'Software Developer', 'Washington DC'],
-    ['Donna Marie', 'Business Manager', 'Annapolis']
+    ['Gabby George', 'Gabby@abc.com', 'Oil Change'],
+    ['Aiden Lloyd', "Aiden@abc.com", 'Oil Change'],
+    ['Jaden Collins', 'Jaden@abc.com', 'Oil Change'],
+    ['Franky Rees', 'Franky@abc.com', 'Oil Change'],
   ]
 
   return (

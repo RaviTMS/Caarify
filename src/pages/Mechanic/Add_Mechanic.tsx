@@ -7,7 +7,6 @@ import Modal_Mechanic from './Modal_Mechanic';
 import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 
-
 const ButtonStyled = styled(Button)<ButtonProps & { component?: ElementType; htmlFor?: string }>(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         width: '100%',

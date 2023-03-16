@@ -11,7 +11,10 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Phone from 'mdi-material-ui/Phone'
 import EmailOutline from 'mdi-material-ui/EmailOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
+import MessageOutline from 'mdi-material-ui/MessageOutline'
+import { Close } from 'mdi-material-ui'
 import { Car3Plus, FormTextboxPassword } from 'mdi-material-ui'
+
 
 const Modal_Mechanic = (props:any) => {
   return (
