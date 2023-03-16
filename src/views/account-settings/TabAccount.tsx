@@ -21,7 +21,7 @@ import Button, { ButtonProps } from '@mui/material/Button'
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
 import TableStickyHeader from '../tables/TableStickyHeader'
-import Add_Mechanic from 'src/pages/account-settings/Add_Mechanic'
+import Add_Mechanic from 'src/pages/Mechanic/Add_Mechanic'
 
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
@@ -70,7 +70,7 @@ const TabAccount = () => {
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
               <Box>
-                <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
+                {/* <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
                   + New Mechanic
                   <input
                     hidden
@@ -79,7 +79,7 @@ const TabAccount = () => {
                     accept='image/png, image/jpeg'
                     id='account-settings-upload-image'
                   />
-                </ButtonStyled>
+                </ButtonStyled> */}
                 <Add_Mechanic />
                 {/* <ResetButtonStyled color='error' variant='outlined' onClick={() => setImgSrc('/images/avatars/1.png')}>
                   Reset

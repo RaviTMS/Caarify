@@ -1,12 +1,11 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { ElementType } from 'react'
+import Button, { ButtonProps } from '@mui/material/Button'
 import Modal from '@mui/material/Modal';
 import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
-import FormLayoutsIcons from 'src/views/form-layouts/FormLayoutsIcons';
+import Modal_Mechanic from './Modal_Mechanic';
 import Grid from '@mui/material/Grid'
-import { Close } from 'mdi-material-ui';
+import { styled } from '@mui/material/styles'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -20,6 +19,12 @@ const style = {
     p: 4,
 };
 
+const ButtonStyled = styled(Button)<ButtonProps & { component?: ElementType; htmlFor?: string }>(({ theme }) => ({
+    [theme.breakpoints.down('sm')]: {
+        width: '100%',
+        textAlign: 'center'
+    }
+}))
 
 const Add_Mechanic = () => {
     const [open, setOpen] = React.useState(false);
@@ -28,31 +33,25 @@ const Add_Mechanic = () => {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <ButtonStyled component='label' variant='contained' onClick={handleOpen}>
+                + New Mechanic
+            </ButtonStyled>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* <Box sx={style}> */}
-                {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography> */}
                 <DatePickerWrapper>
                     <Grid container spacing={6}
                         mt={10}
                         alignItems="center"
                         justifyContent="center">
                         <Grid item xs={6} md={6}>
-                            <FormLayoutsIcons />
+                            <Modal_Mechanic onClose={handleClose} />
                         </Grid>
                     </Grid>
                 </DatePickerWrapper>
-                {/* </Box> */}
             </Modal>
         </div>
     );
