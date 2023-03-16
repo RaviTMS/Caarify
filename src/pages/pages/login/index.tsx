@@ -1,5 +1,6 @@
 // ** React Imports
-import { ChangeEvent, MouseEvent, ReactNode, useState } from 'react'
+import { ChangeEvent, FormEvent, MouseEvent, ReactNode, useState } from 'react'
+// import { useForm, SubmitHandler } from "react-hook-form";
 
 // ** Next Imports
 import Link from 'next/link'
@@ -39,9 +40,17 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 // ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
 
+// for showing and hiding passwords
 interface State {
   password: string
   showPassword: boolean
+}
+
+// for input validations
+interface IFormInput {
+  Username: string;
+  InputPassword: string;
+  preventDefault(): void;
 }
 
 // ** Styled Components
@@ -62,6 +71,7 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
   }
 }))
 
+
 const LoginPage = () => {
   // ** State
   const [values, setValues] = useState<State>({
@@ -69,24 +79,51 @@ const LoginPage = () => {
     showPassword: false
   })
   // state for input username and password
+  const [enteredUname, setEnteredUname] = useState<string>("");
+  const [enteredPassword, setEnteredPassword] = useState<string>("");
   const [inputUsername, setInputUsername] = useState<string>("");
   const [inputPassword, setInputPassword] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(true);
+  // const { register, formState: { errors }, handleSubmit } = useForm<IFormInput>();
+
+  // credentials for login
+  const credential = [
+    { uname: "sutharj907@gmail.com", pass: "12345" },
+    { uname: "sutharj123@gmail.com", pass: "4545" },
+  ];
 
   // ** Hook
   const theme = useTheme()
   const router = useRouter()
 
-  const handleChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+  // const handleChange = (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
+  //   setValues({ ...values, [prop]: event.target.value })
+  // }
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword })
-  }
+  // const handleClickShowPassword = () => {
+  //   setValues({ ...values,  showPassword: !values.showPassword })
+  // }
 
-  const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-  }
+  // const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
+  //   event.preventDefault()
+  // }
+
+  // Login handler
+  const loginHandler = (e: FormEvent) => {
+    e.preventDefault();
+    if(
+      (inputUsername === credential[0].uname &&
+        inputPassword === credential[0].pass)
+      ){
+        setIsValid(true);
+        router.push("/");
+        console.log("Logged IN");
+      }else{
+        setIsValid(false);
+        console.log("Wrong")
+        return;
+      }
+  };
 
   return (
     <Box className='content-center'>
@@ -162,8 +199,8 @@ const LoginPage = () => {
                 fontSize: '1.5rem !important'
               }}
             > */}
-              {/* {themeConfig.templateName} */}
-              {/* CAARIFY
+            {/* {themeConfig.templateName} */}
+            {/* CAARIFY
             </Typography> */}
           </Box>
           <Box sx={{ mb: 6 }}>
@@ -172,29 +209,38 @@ const LoginPage = () => {
             </Typography>
             <Typography variant='body2'>Please sign-in to your account.</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='username' label='Username' sx={{ marginBottom: 4 }} />
+          <form noValidate autoComplete='off' onSubmit={loginHandler}>
+            <TextField 
+            autoFocus 
+            fullWidth 
+            id='username'
+            value={inputUsername} 
+            label='Username' 
+            sx={{ marginBottom: 4 }} 
+            onChange={e => setInputUsername(e.target.value)}
+            />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
-                label='Password'
-                value={values.password}
-                id='auth-login-password'
-                onChange={handleChange('password')}
-                type={values.showPassword ? 'text' : 'password'}
-                endAdornment={
-                  <InputAdornment position='end'>
+              label='Password'
+              value={inputPassword}
+              id='auth-login-password'
+              onChange={e => setInputPassword(e.target.value)}
+              type="password"
+              endAdornment={
+                <InputAdornment position='end'>
                     <IconButton
                       edge='end'
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
+                      // onClick={handleClickShowPassword}
+                      // onMouseDown={handleMouseDownPassword}
                       aria-label='toggle password visibility'
-                    >
+                      >
                       {values.showPassword ? <EyeOutline /> : <EyeOffOutline />}
                     </IconButton>
                   </InputAdornment>
                 }
-              />
+                />
+                {!isValid ? <span>Invalid Username or Password</span> : ""}
             </FormControl>
             {/* <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
@@ -205,11 +251,12 @@ const LoginPage = () => {
               </Link>
             </Box> */}
             <Button
+              type='submit'
               fullWidth
               size='large'
               variant='contained'
               sx={{ marginBottom: 5, marginTop: 7 }}
-              onClick={() => router.push('/')}
+              // onClick={() => router.push('/')}
             >
               Login
             </Button>
