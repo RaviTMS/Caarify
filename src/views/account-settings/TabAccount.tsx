@@ -20,6 +20,8 @@ import Button, { ButtonProps } from '@mui/material/Button'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
+import TableStickyHeader from '../tables/TableStickyHeader'
+import Add_Mechanic from 'src/pages/Mechanic/Add_Mechanic'
 
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
@@ -66,10 +68,10 @@ const TabAccount = () => {
         <Grid container spacing={7}>
           <Grid item xs={12} sx={{ marginTop: 4.8, marginBottom: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <ImgStyled src={imgSrc} alt='Profile Pic' />
+              {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
               <Box>
-                <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
-                  Upload New Photo
+                {/* <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
+                  + New Mechanic
                   <input
                     hidden
                     type='file'
@@ -77,18 +79,23 @@ const TabAccount = () => {
                     accept='image/png, image/jpeg'
                     id='account-settings-upload-image'
                   />
-                </ButtonStyled>
-                <ResetButtonStyled color='error' variant='outlined' onClick={() => setImgSrc('/images/avatars/1.png')}>
+                </ButtonStyled> */}
+                <Add_Mechanic />
+                {/* <ResetButtonStyled color='error' variant='outlined' onClick={() => setImgSrc('/images/avatars/1.png')}>
                   Reset
-                </ResetButtonStyled>
-                <Typography variant='body2' sx={{ marginTop: 5 }}>
+                </ResetButtonStyled> */}
+                {/* <Typography variant='body2' sx={{ marginTop: 5 }}>
                   Allowed PNG or JPEG. Max size of 800K.
-                </Typography>
+                </Typography> */}
               </Box>
             </Box>
+            <Grid item xs={12} mt={5}>
+            <TableStickyHeader />
+          </Grid>
+           
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField fullWidth label='Username' placeholder='johnDoe' defaultValue='johnDoe' />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -124,12 +131,12 @@ const TabAccount = () => {
                 <MenuItem value='pending'>Pending</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6}>
             <TextField fullWidth label='Company' placeholder='ABC Pvt. Ltd.' defaultValue='ABC Pvt. Ltd.' />
-          </Grid>
+          </Grid> */}
 
-          {openAlert ? (
+          {/* {openAlert ? (
             <Grid item xs={12} sx={{ mb: 3 }}>
               <Alert
                 severity='warning'
@@ -146,16 +153,16 @@ const TabAccount = () => {
                 </Link>
               </Alert>
             </Grid>
-          ) : null}
+          ) : null} */}
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Button variant='contained' sx={{ marginRight: 3.5 }}>
               Save Changes
             </Button>
             <Button type='reset' variant='outlined' color='secondary'>
               Reset
             </Button>
-          </Grid>
+          </Grid> */}
         </Grid>
       </form>
     </CardContent>

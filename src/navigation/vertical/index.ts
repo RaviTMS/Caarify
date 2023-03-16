@@ -21,9 +21,9 @@ const navigation = (): VerticalNavItemsType => {
       path: '/'
     },
     {
-      title: 'Account Settings',
+      title: 'Mechanics',
       icon: AccountCogOutline,
-      path: '/account-settings'
+      path: '/Mechanic'
     },
     {
       sectionTitle: 'Pages'

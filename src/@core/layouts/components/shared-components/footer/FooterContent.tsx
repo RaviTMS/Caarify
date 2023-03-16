@@ -12,14 +12,14 @@ const FooterContent = () => {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
       <Typography sx={{ mr: 2 }}>
-        {`© ${new Date().getFullYear()}, All Rights are Reserved `}
-        {/* <Box component='span' sx={{ color: 'error.main' }}>
+        {`© ${new Date().getFullYear()}, Made with `}
+        <Box component='span' sx={{ color: 'error.main' }}>
           ❤️
-        </Box> */}
-        {/* {` by `}
-        <Link>
-          All Rights are Reserved
-        </Link> */}
+        </Box>
+        {` by `}
+        <Link target='_blank' href='#'>
+          Jitendra & Ravi
+        </Link>
       </Typography>
       {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
@@ -37,13 +37,13 @@ const FooterContent = () => {
             href='https://github.com/themeselection/materio-mui-react-nextjs-admin-template-free/blob/main/README.md'
           >
             Documentation
-          </Link>
+          </Link> */}
           <Link
             target='_blank'
-            href='https://github.com/themeselection/materio-mui-react-nextjs-admin-template-free/issues'
+            href='https://github.com/sutharjitendra27/Caarify'
           >
             Support
-          </Link> */}
+          </Link>
         </Box>
       )}
     </Box>

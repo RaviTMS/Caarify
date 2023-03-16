@@ -4,6 +4,8 @@ import Link from '@mui/material/Link'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
+import MUI_Datatable from '../Datatable/MUI_Datatable'
+import DataTable from '../Datatable'
 
 // ** Demo Components Imports
 import TableBasic from 'src/views/tables/TableBasic'
@@ -12,6 +14,7 @@ import TableSpanning from 'src/views/tables/TableSpanning'
 import TableCustomized from 'src/views/tables/TableCustomized'
 import TableCollapsible from 'src/views/tables/TableCollapsible'
 import TableStickyHeader from 'src/views/tables/TableStickyHeader'
+import MUIDataTable from 'mui-datatables'
 
 const MUITable = () => {
   return (
@@ -58,6 +61,13 @@ const MUITable = () => {
         <Card>
           <CardHeader title='Customized Table' titleTypographyProps={{ variant: 'h6' }} />
           <TableCustomized />
+        </Card>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Card>
+          <CardHeader title='MUI Datatable Table' titleTypographyProps={{ variant: 'h6' }} />
+          <MUI_Datatable />
         </Card>
       </Grid>
     </Grid>

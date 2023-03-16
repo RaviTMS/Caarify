@@ -14,7 +14,7 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import { Close } from 'mdi-material-ui'
 
-const FormLayoutsIcons = () => {
+const Modal_Mechanic = (props:any) => {
   return (
     <Card>
       <CardHeader title='Basic with Icons' titleTypographyProps={{ variant: 'h6' }} />
@@ -87,7 +87,7 @@ const FormLayoutsIcons = () => {
               <Button type='submit' variant='contained' size='large'>
                 Submit
               </Button>
-              <Button type='submit' variant='contained' size='large' color="error">
+              <Button type='submit' variant='contained' size='large' color="error" onClick={props.onClose}>
                 Close
               </Button>
             </Grid>
@@ -98,4 +98,4 @@ const FormLayoutsIcons = () => {
   )
 }
 
-export default FormLayoutsIcons
+export default Modal_Mechanic
