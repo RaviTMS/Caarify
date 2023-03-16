@@ -9,9 +9,8 @@ import Grid from '@mui/material/Grid'
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
-import Table from 'src/views/dashboard/Table'
 import StatisticsCard from 'src/views/dashboard/StatisticsCard'
-import TableStickyHeader from 'src/views/tables/TableStickyHeader'
+import ServiceRequest_DataTable from './Datatable/Requests_Table'
 
 const Dashboard = () => {
   return (
@@ -26,7 +25,8 @@ const Dashboard = () => {
         
         <Grid item xs={12}>
           {/* <Table /> */}
-          <TableStickyHeader />
+          {/* <TableStickyHeader /> */}
+          <ServiceRequest_DataTable />
         </Grid>
       </Grid>
     </ApexChartWrapper>
