@@ -68,6 +68,9 @@ const LoginPage = () => {
     password: '',
     showPassword: false
   })
+  // state for input username and password
+  const [inputUsername, setInputUsername] = useState<string>("");
+  const [inputPassword, setInputPassword] = useState<string>("");
 
   // ** Hook
   const theme = useTheme()
@@ -89,8 +92,8 @@ const LoginPage = () => {
     <Box className='content-center'>
       <Card sx={{ zIndex: 1 }}>
         <CardContent sx={{ padding: theme => `${theme.spacing(12, 9, 7)} !important` }}>
-          <Box sx={{ mb: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg
+          <Box sx={{ mb: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* <svg
               width={35}
               height={29}
               version='1.1'
@@ -148,8 +151,8 @@ const LoginPage = () => {
                   </g>
                 </g>
               </g>
-            </svg>
-            <Typography
+            </svg> */}
+            {/* <Typography
               variant='h6'
               sx={{
                 ml: 3,
@@ -158,18 +161,19 @@ const LoginPage = () => {
                 textTransform: 'uppercase',
                 fontSize: '1.5rem !important'
               }}
-            >
-              {themeConfig.templateName}
-            </Typography>
+            > */}
+              {/* {themeConfig.templateName} */}
+              {/* CAARIFY
+            </Typography> */}
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
-              Welcome to {themeConfig.templateName}! 👋🏻
+              Welcome to Caarify! 👋🏻
             </Typography>
-            <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
+            <Typography variant='body2'>Please sign-in to your account.</Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} />
+            <TextField autoFocus fullWidth id='username' label='Username' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
@@ -192,24 +196,24 @@ const LoginPage = () => {
                 }
               />
             </FormControl>
-            <Box
+            {/* <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
             >
               <FormControlLabel control={<Checkbox />} label='Remember Me' />
               <Link passHref href='/'>
                 <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
               </Link>
-            </Box>
+            </Box> */}
             <Button
               fullWidth
               size='large'
               variant='contained'
-              sx={{ marginBottom: 7 }}
+              sx={{ marginBottom: 5, marginTop: 7 }}
               onClick={() => router.push('/')}
             >
               Login
             </Button>
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+            {/* <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Typography variant='body2' sx={{ marginRight: 2 }}>
                 New on our platform?
               </Typography>
@@ -218,8 +222,8 @@ const LoginPage = () => {
                   <LinkStyled>Create an account</LinkStyled>
                 </Link>
               </Typography>
-            </Box>
-            <Divider sx={{ my: 5 }}>or</Divider>
+            </Box> */}
+            <Divider sx={{ my: 1 }}>or</Divider>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Link href='/' passHref>
                 <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>

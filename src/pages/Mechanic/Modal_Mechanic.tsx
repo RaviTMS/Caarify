@@ -13,6 +13,8 @@ import EmailOutline from 'mdi-material-ui/EmailOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import { Close } from 'mdi-material-ui'
+import { Car3Plus, FormTextboxPassword } from 'mdi-material-ui'
+
 
 const Modal_Mechanic = (props:any) => {
   return (
@@ -69,15 +71,29 @@ const Modal_Mechanic = (props:any) => {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                multiline
-                minRows={3}
+                type='password'
+                label='password'
+                placeholder='********'
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <FormTextboxPassword />
+                    </InputAdornment>
+                  )
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                type="number"
                 label='Message'
-                placeholder='Bio...'
+                placeholder='Services'
                 sx={{ '& .MuiOutlinedInput-root': { alignItems: 'baseline' } }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
-                      <MessageOutline />
+                      <Car3Plus />
                     </InputAdornment>
                   )
                 }}
