@@ -16,32 +16,32 @@ const muiCache = createCache({
 })
 
 function App() {
-  const [responsive, setResponsive] = useState('vertical')
-  const [tableBodyHeight, setTableBodyHeight] = useState('400px')
-  const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState('')
-  const [searchBtn, setSearchBtn] = useState<string | boolean>(true)
-  const [downloadBtn, setDownloadBtn] = useState<string | boolean>(true)
-  const [printBtn, setPrintBtn] = useState<string | boolean>(true)
-  const [viewColumnBtn, setViewColumnBtn] = useState<string | boolean>(true)
-  const [filterBtn, setFilterBtn] = useState<string | boolean>(true)
+  // const [responsive, setResponsive] = useState('vertical')
+  // const [tableBodyHeight, setTableBodyHeight] = useState('400px')
+  // const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState('')
+  // const [searchBtn, setSearchBtn] = useState<boolean>(true)
+  // const [downloadBtn, setDownloadBtn] = useState<boolean>(true)
+  // const [printBtn, setPrintBtn] = useState<boolean>(true)
+  // const [viewColumnBtn, setViewColumnBtn] = useState<boolean>(true)
+  // const [filterBtn, setFilterBtn] = useState< boolean>(true)
 
-  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Title', 'Location']
+  const columns : [{name:string;options:{filterOptions:{fullWidth:boolean}}},string,string] = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Title', 'Location']
 
-  const options = {
-    search: searchBtn,
-    download: downloadBtn,
-    print: printBtn,
-    viewColumns: viewColumnBtn,
-    filter: filterBtn,
-    filterType: 'dropdown',
-    responsive,
-    tableBodyHeight,
-    tableBodyMaxHeight,
-    onTableChange: (action:string, state:string) => {
-      console.log(action)
-      console.dir(state)
-    }
-  }
+  // const options = {
+  //   search : searchBtn,
+  //   download: downloadBtn,
+  //   print: printBtn,
+  //   viewColumns: viewColumnBtn,
+  //   filter: filterBtn,
+  //   filterType: 'dropdown',
+  //   responsive,
+  //   tableBodyHeight,
+  //   tableBodyMaxHeight,
+  //   onTableChange: (action:string, state:string) => {
+  //     console.log(action)
+  //     console.dir(state)
+  //   }
+  // }
 
   const data = [
     ['Gabby George', 'Business Analyst', 'Minneapolis'],
@@ -189,7 +189,7 @@ function App() {
             <MenuItem value={"disabled"}>disabled</MenuItem>
           </Select> */}
         </FormControl>
-        <MUIDataTable title={'ACME Employee list'} data={data} columns={columns} options={options} />
+         <MUIDataTable title={'ACME Employee list'} data={data} columns={columns}/> {/*options={options} /> */}
       </ThemeProvider>
     </CacheProvider>
   )
