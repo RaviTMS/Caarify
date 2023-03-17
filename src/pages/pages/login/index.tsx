@@ -107,22 +107,38 @@ const LoginPage = () => {
   // const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
   //   event.preventDefault()
   // }
+  const UnameChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+
+    if (e.target.value.trim().length > 0) {
+      setIsValid(true);
+    }
+    setInputUsername(e.target.value);
+    console.log(inputUsername);
+  }
+
+  const PassChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.trim().length > 0) {
+      setIsValid(true);
+    }
+    setInputPassword(e.target.value);
+    console.log(inputPassword);
+  }
 
   // Login handler
   const loginHandler = (e: FormEvent) => {
     e.preventDefault();
-    if(
+    if (
       (inputUsername === credential[0].uname &&
         inputPassword === credential[0].pass)
-      ){
-        setIsValid(true);
-        router.push("/");
-        console.log("Logged IN");
-      }else{
-        setIsValid(false);
-        console.log("Wrong")
-        return;
-      }
+    ) {
+      setIsValid(true);
+      router.push("/");
+      console.log("Logged IN");
+    } else {
+      setIsValid(false);
+      console.log("Wrong")
+      return;
+    }
   };
 
   return (
@@ -210,37 +226,37 @@ const LoginPage = () => {
             <Typography variant='body2'>Please sign-in to your account.</Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={loginHandler}>
-            <TextField 
-            autoFocus 
-            fullWidth 
-            id='username'
-            value={inputUsername} 
-            label='Username' 
-            sx={{ marginBottom: 4 }} 
-            onChange={e => setInputUsername(e.target.value)}
+            <TextField
+              autoFocus
+              fullWidth
+              id='username'
+              value={inputUsername}
+              label='Username'
+              sx={{ marginBottom: 4 }}
+              onChange={UnameChangeHandler}
             />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
-              label='Password'
-              value={inputPassword}
-              id='auth-login-password'
-              onChange={e => setInputPassword(e.target.value)}
-              type="password"
-              endAdornment={
-                <InputAdornment position='end'>
+                label='Password'
+                value={inputPassword}
+                id='auth-login-password'
+                onChange={PassChangeHandler}
+                type="password"
+                endAdornment={
+                  <InputAdornment position='end'>
                     <IconButton
                       edge='end'
                       // onClick={handleClickShowPassword}
                       // onMouseDown={handleMouseDownPassword}
                       aria-label='toggle password visibility'
-                      >
+                    >
                       {values.showPassword ? <EyeOutline /> : <EyeOffOutline />}
                     </IconButton>
                   </InputAdornment>
                 }
-                />
-                {!isValid ? <span>Invalid Username or Password</span> : ""}
+              />
+              {!isValid ? <span>Invalid Username or Password</span> : ""}
             </FormControl>
             {/* <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
@@ -256,7 +272,7 @@ const LoginPage = () => {
               size='large'
               variant='contained'
               sx={{ marginBottom: 5, marginTop: 7 }}
-              // onClick={() => router.push('/')}
+            // onClick={() => router.push('/')}
             >
               Login
             </Button>
