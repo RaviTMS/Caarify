@@ -12,6 +12,7 @@ import FormLayoutsAlignment from 'src/views/form-layouts/FormLayoutsAlignment'
 
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
+import Demo_Post_Request from '../Datatable/Requests_Table/Demo_Post_Request'
 
 const FormLayouts = () => {
   return (
@@ -28,6 +29,10 @@ const FormLayouts = () => {
         </Grid>
         <Grid item xs={12}>
           <FormLayoutsAlignment />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Demo_Post_Request />
         </Grid>
       </Grid>
     </DatePickerWrapper>
