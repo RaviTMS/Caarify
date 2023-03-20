@@ -12,13 +12,13 @@ const muiCache = createCache({
 
 function Mechanic_Datatable() {
 
-  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Email', 'Service Completed']
+  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Email', 'Contact', 'Service Completed']
 
   const data = [
-    ['Gabby George', 'Gabby@abc.com', 'Oil Change'],
-    ['Aiden Lloyd', "Aiden@abc.com", 'Oil Change'],
-    ['Jaden Collins', 'Jaden@abc.com', 'Oil Change'],
-    ['Franky Rees', 'Franky@abc.com', 'Oil Change'],
+    ['Gabby George', 'Gabby@abc.com', '+91 8902827346', 5],
+    ['Aiden Lloyd', "Aiden@abc.com", '+91 8902856346', 10],
+    ['Jaden Collins', 'Jaden@abc.com', '+91 8902824546', 12],
+    ['Franky Rees', 'Franky@abc.com', '+91 8902823656', 2],
   ]
 
   return (

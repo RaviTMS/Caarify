@@ -1,9 +1,10 @@
 import MUIDataTable from 'mui-datatables'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import { createTheme } from '@mui/material/styles'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
+import { FileEditOutline } from 'mdi-material-ui'
 
 const muiCache = createCache({
   key: 'mui-datatables',
@@ -11,23 +12,32 @@ const muiCache = createCache({
 })
 
 function Requests_Datatable() {
+  const [loadedRequest, setLoadedRequest] = useState([]);
+  const [bookings, setBookings] = useState<string[] | any[]>([]); 
 
-  const columns = [{ name: 'Name', options: { filterOptions: { fullWidth: true } } }, 'Title', 'Location']
+  const columns = [{ name: 'Date', options: { filterOptions: { fullWidth: true } } }, 'Car_Name', 'Customer_Name', 'Service_Type', 'Status', 'Actions']
 
-  const data = [
-    ['Gabby George', 'Business Analyst', 'Minneapolis'],
-    ['Aiden Lloyd', "Business Consultant for an International Company and CEO of Tony's Burger Palace", 'Dallas'],
-    ['Jaden Collins', 'Attorney', 'Santa Ana'],
-    ['Franky Rees', 'Business Analyst', 'St. Petersburg'],
-    ['Aaren Rose', null, 'Toledo'],
-    ['Johnny Jones', 'Business Analyst', 'St. Petersburg'],
-    ['Jimmy Johns', 'Business Analyst', 'Baltimore'],
-    ['Jack Jackson', 'Business Analyst', 'El Paso'],
-    ['Joe Jones', 'Computer Programmer', 'El Paso'],
-    ['Jacky Jackson', 'Business Consultant', 'Baltimore'],
-    ['Jo Jo', 'Software Developer', 'Washington DC'],
-    ['Donna Marie', 'Business Manager', 'Annapolis']
-  ]
+  const data = [loadedRequest]
+
+  useEffect(() => {
+    fetchRequestData()
+  }, [])
+
+  const fetchRequestData = async() => {
+      const response = await fetch('https://caarify-de26d-default-rtdb.firebaseio.com/Bookings.json');
+      if(!response.ok){
+        throw new Error('Something went wrong!');
+      }
+
+      const req_Data = await response.json();
+
+      // const loadedRequests = [];
+
+
+
+      console.log(req_Data);
+      setLoadedRequest(req_Data);
+  }
 
   return (
     <CacheProvider value={muiCache}>
