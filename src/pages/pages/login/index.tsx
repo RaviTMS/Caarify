@@ -5,6 +5,9 @@ import { ChangeEvent, FormEvent, MouseEvent, ReactNode, useState } from 'react'
 // ** Next Imports
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+//toastify Import
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** MUI Components
 import Box from '@mui/material/Box'
@@ -48,9 +51,9 @@ interface State {
 
 // for input validations
 interface IFormInput {
-  Username: string;
-  InputPassword: string;
-  preventDefault(): void;
+  Username: string
+  InputPassword: string
+  preventDefault(): void
 }
 
 // ** Styled Components
@@ -71,7 +74,6 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
   }
 }))
 
-
 const LoginPage = () => {
   // ** State
   const [values, setValues] = useState<State>({
@@ -79,18 +81,18 @@ const LoginPage = () => {
     showPassword: false
   })
   // state for input username and password
-  const [enteredUname, setEnteredUname] = useState<string>("");
-  const [enteredPassword, setEnteredPassword] = useState<string>("");
-  const [inputUsername, setInputUsername] = useState<string>("");
-  const [inputPassword, setInputPassword] = useState<string>("");
-  const [isValid, setIsValid] = useState<boolean>(true);
+  const [enteredUname, setEnteredUname] = useState<string>('')
+  const [enteredPassword, setEnteredPassword] = useState<string>('')
+  const [inputUsername, setInputUsername] = useState<string>('')
+  const [inputPassword, setInputPassword] = useState<string>('')
+  const [isValid, setIsValid] = useState<boolean>(true)
   // const { register, formState: { errors }, handleSubmit } = useForm<IFormInput>();
 
   // credentials for login
   const credential = [
-    { uname: "sutharj907@gmail.com", pass: "12345" },
-    { uname: "sutharj123@gmail.com", pass: "4545" },
-  ];
+    { uname: 'sutharj907@gmail.com', pass: '12345' },
+    { uname: 'sutharj123@gmail.com', pass: '4545' }
+  ]
 
   // ** Hook
   const theme = useTheme()
@@ -108,38 +110,55 @@ const LoginPage = () => {
   //   event.preventDefault()
   // }
   const UnameChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-
     if (e.target.value.trim().length > 0) {
-      setIsValid(true);
+      setIsValid(true)
     }
-    setInputUsername(e.target.value);
-    console.log(inputUsername);
+    setInputUsername(e.target.value)
+    console.log(inputUsername)
   }
 
   const PassChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.trim().length > 0) {
-      setIsValid(true);
+      setIsValid(true)
     }
-    setInputPassword(e.target.value);
-    console.log(inputPassword);
+    setInputPassword(e.target.value)
+    console.log(inputPassword)
   }
 
   // Login handler
   const loginHandler = (e: FormEvent) => {
-    e.preventDefault();
-    if (
-      (inputUsername === credential[0].uname &&
-        inputPassword === credential[0].pass)
-    ) {
-      setIsValid(true);
-      router.push("/");
-      console.log("Logged IN");
+    e.preventDefault()
+    if (inputUsername === credential[0].uname && inputPassword === credential[0].pass) {
+      setIsValid(true)
+      router.push('/')
+
+      toast.success('Successfully Logged IN!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      })
+      console.log('Logged IN')
     } else {
-      setIsValid(false);
-      console.log("Wrong")
-      return;
+      setIsValid(false)
+      toast.error('Invalidredintials', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      })
+      console.log('Wrong')
+      return
     }
-  };
+  }
 
   return (
     <Box className='content-center'>
@@ -235,6 +254,7 @@ const LoginPage = () => {
               sx={{ marginBottom: 4 }}
               onChange={UnameChangeHandler}
             />
+
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
@@ -242,7 +262,7 @@ const LoginPage = () => {
                 value={inputPassword}
                 id='auth-login-password'
                 onChange={PassChangeHandler}
-                type="password"
+                type='password'
                 endAdornment={
                   <InputAdornment position='end'>
                     <IconButton
@@ -253,10 +273,11 @@ const LoginPage = () => {
                     >
                       {values.showPassword ? <EyeOutline /> : <EyeOffOutline />}
                     </IconButton>
+                    <ToastContainer limit={1} />
                   </InputAdornment>
                 }
               />
-              {!isValid ? <span>Invalid Username or Password</span> : ""}
+              {!isValid ? <span>Invalid Username or Password</span> : ''}
             </FormControl>
             {/* <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
@@ -272,7 +293,7 @@ const LoginPage = () => {
               size='large'
               variant='contained'
               sx={{ marginBottom: 5, marginTop: 7 }}
-            // onClick={() => router.push('/')}
+              // onClick={() => router.push('/')}
             >
               Login
             </Button>
