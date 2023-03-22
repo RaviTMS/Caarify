@@ -7,6 +7,8 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import { useState } from 'react'
 import { SyntheticEvent } from 'react'
+import { collection, addDoc } from "firebase/firestore";
+import db from './Firebase_Config'
 
 
 const Demo_Post_Request = () => {
@@ -41,7 +43,8 @@ const Demo_Post_Request = () => {
         Total_Price: totalPrice
     }
 
-    const addBookingRequest = async(e: SyntheticEvent) => {
+    // Sending data to firebase realtime database
+    const addBookingRequest = async (e: SyntheticEvent) => {
         e.preventDefault();
 
         const response = await fetch('https://caarify-de26d-default-rtdb.firebaseio.com/Requests.json',
@@ -55,16 +58,38 @@ const Demo_Post_Request = () => {
             }
         );
 
-        const response_data =  await response.json();
+        const response_data = await response.json();
 
         console.log(response_data);
+    }
+
+    // Sending data to firestore
+    const addDataCollection = async (e: SyntheticEvent) => {
+        e.preventDefault();
+
+        const docRef = await addDoc(collection(db, "Requests"), {
+            Date: date,
+            Customer_Name: custName,
+            Car_Name: carName,
+            Car_Type: carType,
+            Car_Number: carNumber,
+            Car_Model: carModel,
+            Additional_Service: additionalSevice,
+            Actions: Actions,
+            Emergency_type: Emergency,
+            Fuel_type: fuelType,
+            Service_Type: serviceType,
+            Status: status,
+            Total_Price: totalPrice
+        });
+        console.log("Document written with ID: ", docRef.id);
     }
 
     return (
         <Card>
             <CardHeader title='Basic' titleTypographyProps={{ variant: 'h6' }} />
             <CardContent>
-                <form onSubmit={addBookingRequest}>
+                <form onSubmit={addDataCollection}>
                     <Grid container spacing={5}>
                         <Grid item xs={12}>
                             <TextField fullWidth label='Date' type="date"
