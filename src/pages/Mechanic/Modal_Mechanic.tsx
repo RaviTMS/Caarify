@@ -21,7 +21,7 @@ const Modal_Mechanic = (props: any) => {
   const [nameError, setNameError] = useState('')
   const [emailError, setEmailError] = useState<string>('')
   const [phoneError, setPhoneError] = useState('')
-  const [ServicesError, setServicesError] = useState('')
+  const [servicesError, setServicesError] = useState('')
   const [isValid, setIsvalid] = useState(true)
 
   const nameHandler = (e: any) => {
@@ -69,13 +69,13 @@ const Modal_Mechanic = (props: any) => {
       setIsvalid(false)
     } else if (phoneError === '') {
       setIsvalid(false)
-    } else if (ServicesError === '') {
+    } else if (servicesError === '') {
       setIsvalid(false)
     } else {
       setIsvalid(true)
     }
   }
-  useEffect(sumbitHandler, [nameError, emailError, phoneError, ServicesError])
+  useEffect(sumbitHandler, [nameError, emailError, phoneError, servicesError])
 
 
   
@@ -162,8 +162,8 @@ const useStyles = makeStyles({
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                error={ServicesError == '' ? false : true}
-                helperText={ServicesError}
+                error={servicesError == '' ? false : true}
+                helperText={servicesError}
                 onChange={serviceHandler}
                 type='number'
                 label='services'
@@ -180,7 +180,7 @@ const useStyles = makeStyles({
               />
             </Grid>
             <Grid item xs={12} display='flex' justifyContent='space-between'>
-              <Button type='submit' variant='contained' onClick={sumbitHandler} disabled={isValid} size='large'>
+              <Button type='submit' variant='contained' onClick={sumbitHandler} disabled={!(!nameError && !emailError && !phoneError && !servicesError)} size='large'>
                 Submit
                 {console.log(isValid)}
               </Button>
