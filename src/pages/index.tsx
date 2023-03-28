@@ -1,3 +1,6 @@
+///* auth 
+import { getSession } from "next-auth/react"
+
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
@@ -25,6 +28,22 @@ const Dashboard = () => {
       </Grid>
     </ApexChartWrapper>
   )
-}
+  }
+  export async function getServerSideProps(context:any){
+    const session =await getSession(context)  
+    
+    if(!session){
+      return{
+        redirect:{
+                destination: "./pages/login",
+                permanent: false,
+        },
+      }
+    }
+      return{
+        props:{session}
+      }
+  } 
+
 
 export default Dashboard
