@@ -7,6 +7,8 @@ import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import InputAdornment from '@mui/material/InputAdornment'
 import { makeStyles } from '@mui/styles'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** Icons Imports
 import Phone from 'mdi-material-ui/Phone'
@@ -23,8 +25,13 @@ const Modal_Mechanic = (props: any) => {
   const [phoneError, setPhoneError] = useState('')
   const [servicesError, setServicesError] = useState('')
   const [isValid, setIsvalid] = useState(true)
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [phone, setPhone] = useState()
+  const [services, setServices] = useState()
 
   const nameHandler = (e: any) => {
+    setName(e.target.value)
     if (e.target.value === '') {
       setNameError("Can't be empty")
     } else {
@@ -33,6 +40,7 @@ const Modal_Mechanic = (props: any) => {
     }
   }
   const emailHandler = (e: any) => {
+    setEmail(e.target.value)
     if (e.target.value === '') {
       setEmailError("Can't be empty")
     } else if (!e.target.value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i)) {
@@ -43,6 +51,7 @@ const Modal_Mechanic = (props: any) => {
     }
   }
   const phoneHandler = (e: any) => {
+    setPhoneError(e.target.value)
     if (e.target.value === '') {
       setPhoneError("Can't be empty")
     } else if (e.target.value.length > 10) {
@@ -55,6 +64,7 @@ const Modal_Mechanic = (props: any) => {
     }
   }
   const serviceHandler = (e: any) => {
+    setServices(e.target.value)
     if (e.target.value === '') {
       setServicesError("Can't be empty")
     } else {
@@ -63,19 +73,34 @@ const Modal_Mechanic = (props: any) => {
   }
 
   const sumbitHandler = () => {
-    if (nameError === '') {
-      setIsvalid(false)
-    } else if (emailError === '') {
-      setIsvalid(false)
-    } else if (phoneError === '') {
-      setIsvalid(false)
-    } else if (servicesError === '') {
-      setIsvalid(false)
-    } else {
-      setIsvalid(true)
-    }
+
+      if(!email || !name || !phone || !services){
+        toast.error("Fields can't be empty", {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light'
+        })
+
+      } 
+
+    // if (nameError === '') {
+    //   setIsvalid(false)
+    // } else if (emailError === '') {
+    //   setIsvalid(false)
+    // } else if (phoneError === '') {
+    //   setIsvalid(false)
+    // } else if (servicesError === '') {
+    //   setIsvalid(false)
+    // } else {
+    //   setIsvalid(true)
+    // }
   }
-  useEffect(sumbitHandler, [nameError, emailError, phoneError, servicesError])
+  // useEffect(sumbitHandler, [nameError, emailError, phoneError, servicesError])
 
 
   
@@ -100,6 +125,7 @@ const useStyles = makeStyles({
     <Card>
       <CardHeader title='ADD MECHANIC' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
+        <ToastContainer/>
         <form onSubmit={e => e.preventDefault()}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
@@ -108,6 +134,7 @@ const useStyles = makeStyles({
                 error={nameError == '' ? false : true}
                 onChange={nameHandler}
                 helperText={nameError}
+                value={name}
                 label='Full Name'
                 placeholder='Leonard Carter'
                 InputProps={{
@@ -126,6 +153,7 @@ const useStyles = makeStyles({
                 onChange={emailHandler}
                 type='email'
                 label='Email'
+                value={email}
                 placeholder='carterleonard@gmail.com'
                 helperText={emailError}
                 InputProps={{
@@ -166,6 +194,7 @@ const useStyles = makeStyles({
                 helperText={servicesError}
                 onChange={serviceHandler}
                 type='number'
+                value = {services}
                 label='services'
                 placeholder='Services'
                 sx={{ '& .MuiOutlinedInput-root': { alignItems: 'baseline' } }}

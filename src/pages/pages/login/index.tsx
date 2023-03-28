@@ -90,7 +90,7 @@ const LoginPage = () => {
 
   // credentials for login
   const credential = [
-    { uname: 'sutharj907@gmail.com', pass: '12345' },
+    { uname: 'React@tms.com', pass: '12345' },
     { uname: 'sutharj123@gmail.com', pass: '4545' }
   ]
 
@@ -145,7 +145,7 @@ const LoginPage = () => {
       console.log('Logged IN')
     } else {
       setIsValid(false)
-      toast.error('Invalidredintials', {
+      toast.error('Invalid Credintials', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -277,7 +277,7 @@ const LoginPage = () => {
                   </InputAdornment>
                 }
               />
-              {!isValid ? <span>Invalid Username or Password</span> : ''}
+              {/* {!isValid ? <span>Invalid Username or Password</span> : ''} */}
             </FormControl>
             {/* <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
